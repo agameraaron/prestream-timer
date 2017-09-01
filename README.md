@@ -15,3 +15,6 @@ To do:
 - When minutes are input, divide by 60 and add to hours.
 - When minutes are input, convert decimal entries to seconds.
 - When hours are input, convert decimal entries to minutes & seconds.
+- Selectable background color.
+- Selectable text color.
+- Selectable fonts.
