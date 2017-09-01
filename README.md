@@ -2,7 +2,7 @@
 A tool to announce when a stream will start. 
 For use with a streaming program such as 'OBS'.
 
-![alt text](https://raw.githubusercontent.com/agameraaron/prestream-timer/master/v0_2%20example.gif)
+![alt text](https://raw.githubusercontent.com/agameraaron/prestream-timer/master/demo0.gif) ![alt text](https://raw.githubusercontent.com/agameraaron/prestream-timer/master/demo1.gif)
 
 MIT licensed, created by AGamerAaron of "VAR Team".
 
