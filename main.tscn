@@ -70,17 +70,17 @@ content_margin/bottom = -1.0
 
 [sub_resource type="DynamicFont" id=9]
 
-font/size = 48
+font/size = 16
 font/use_mipmaps = false
 font/use_filter = false
-font/font = ExtResource( 3 )
+font/font = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="StyleBoxEmpty" id=10]
 
-font/size = 48
-font/use_mipmaps = false
-font/use_filter = false
-font/font = ExtResource( 3 )
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
 
 [sub_resource type="StyleBoxEmpty" id=11]
 
@@ -96,19 +96,19 @@ content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
 
-[sub_resource type="StyleBoxEmpty" id=13]
+[sub_resource type="DynamicFont" id=13]
 
-content_margin/left = -1.0
-content_margin/right = -1.0
-content_margin/top = -1.0
-content_margin/bottom = -1.0
+font/size = 48
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=14]
 
-font/size = 16
+font/size = 48
 font/use_mipmaps = false
 font/use_filter = false
-font/font = ExtResource( 2 )
+font/font = ExtResource( 3 )
 
 [node name="main" type="Node2D"]
 
@@ -132,10 +132,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 72.0
-margin/top = 0.0
-margin/right = 572.0
-margin/bottom = 140.0
+margin/left = 79.0
+margin/top = 13.0
+margin/right = 579.0
+margin/bottom = 125.0
 custom_styles/focus = SubResource( 1 )
 custom_styles/normal = SubResource( 2 )
 custom_styles/completion = SubResource( 3 )
@@ -155,10 +155,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 640.0
-margin/bottom = 116.0
+margin/left = 79.0
+margin/top = 13.0
+margin/right = 579.0
+margin/bottom = 125.0
 custom_fonts/font = SubResource( 5 )
 text = "Announcement goes here."
 align = 1
@@ -168,70 +168,20 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="countdown timer" type="Timer" parent="."]
-
-process_mode = 0
-wait_time = 1.0
-one_shot = true
-autostart = false
-
-[node name="countdown timer editor" type="TextEdit" parent="."]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 1
-size_flags/vertical = 2
-margin/left = 179.0
-margin/top = 144.0
-margin/right = 506.0
-margin/bottom = 218.0
-custom_styles/focus = SubResource( 6 )
-custom_styles/normal = SubResource( 7 )
-custom_styles/completion = SubResource( 8 )
-custom_fonts/font = SubResource( 9 )
-custom_colors/caret_color = Color( 0.703125, 0.0384521, 0.0384521, 1 )
-custom_colors/current_line_color = Color( 0, 0, 0, 0 )
-syntax_highlighting = false
-show_line_numbers = false
-highlight_all_occurrences = false
-caret/block_caret = true
-caret/caret_blink = true
-caret/caret_blink_speed = 0.4
-
-[node name="countdown timer display" type="Label" parent="."]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 199.0
-margin/top = 123.0
-margin/right = 639.0
-margin/bottom = 237.0
-custom_fonts/font = SubResource( 10 )
-text = "0000.00000"
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="details editor" type="TextEdit" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 72.0
-margin/top = 248.0
-margin/right = 572.0
-margin/bottom = 360.0
-custom_styles/focus = SubResource( 11 )
-custom_styles/normal = SubResource( 12 )
-custom_styles/completion = SubResource( 13 )
-custom_fonts/font = SubResource( 14 )
+margin/left = 76.0
+margin/top = 203.0
+margin/right = 576.0
+margin/bottom = 315.0
+custom_styles/focus = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_styles/completion = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/caret_background_color = Color( 0.0547943, 0.337801, 0.738281, 1 )
 custom_colors/current_line_color = Color( 0, 0, 0, 0 )
 syntax_highlighting = false
@@ -247,14 +197,189 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 254.0
-margin/right = 640.0
-margin/bottom = 360.0
+margin/left = 76.0
+margin/top = 203.0
+margin/right = 576.0
+margin/bottom = 315.0
 custom_fonts/font = SubResource( 5 )
 text = "Details go here."
 align = 1
 autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="countdown timer" type="Timer" parent="."]
+
+process_mode = 0
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="countdown timer editor seconds" type="TextEdit" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 342.0
+margin/top = 137.0
+margin/right = 501.0
+margin/bottom = 212.0
+custom_styles/focus = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+custom_styles/completion = SubResource( 12 )
+custom_fonts/font = SubResource( 13 )
+custom_colors/caret_color = Color( 0.703125, 0.0384521, 0.0384521, 1 )
+custom_colors/current_line_color = Color( 0, 0, 0, 0 )
+syntax_highlighting = false
+show_line_numbers = false
+highlight_all_occurrences = false
+caret/block_caret = true
+caret/caret_blink = true
+caret/caret_blink_speed = 0.4
+
+[node name="countdown timer display seconds" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 0
+size_flags/vertical = 0
+margin/left = 342.0
+margin/top = 143.0
+margin/right = 552.0
+margin/bottom = 208.0
+custom_fonts/font = SubResource( 14 )
+text = "00.000"
+valign = 1
+clip_text = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="countdown timer editor minutes" type="TextEdit" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 2
+margin/left = 257.0
+margin/top = 138.0
+margin/right = 318.0
+margin/bottom = 212.0
+custom_styles/focus = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+custom_styles/completion = SubResource( 12 )
+custom_fonts/font = SubResource( 13 )
+custom_colors/caret_color = Color( 0.703125, 0.0384521, 0.0384521, 1 )
+custom_colors/current_line_color = Color( 0, 0, 0, 0 )
+syntax_highlighting = false
+show_line_numbers = false
+highlight_all_occurrences = false
+caret/block_caret = true
+caret/caret_blink = true
+caret/caret_blink_speed = 0.4
+
+[node name="countdown timer display minutes" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 67.0
+margin/top = 143.0
+margin/right = 507.0
+margin/bottom = 208.0
+custom_fonts/font = SubResource( 14 )
+text = "00"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="countdown timer editor hours" type="TextEdit" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 2
+margin/left = 172.0
+margin/top = 138.0
+margin/right = 233.0
+margin/bottom = 212.0
+custom_styles/focus = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+custom_styles/completion = SubResource( 12 )
+custom_fonts/font = SubResource( 13 )
+custom_colors/caret_color = Color( 0.703125, 0.0384521, 0.0384521, 1 )
+custom_colors/current_line_color = Color( 0, 0, 0, 0 )
+syntax_highlighting = false
+show_line_numbers = false
+highlight_all_occurrences = false
+caret/block_caret = true
+caret/caret_blink = true
+caret/caret_blink_speed = 0.4
+
+[node name="countdown timer display hours" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -16.0
+margin/top = 143.0
+margin/right = 424.0
+margin/bottom = 208.0
+custom_fonts/font = SubResource( 14 )
+text = "00"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="countdown timer label seconds" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 389.0
+margin/top = 134.0
+margin/right = 442.0
+margin/bottom = 148.0
+text = "Seconds"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="countdown timer label minutes" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 262.0
+margin/top = 134.0
+margin/right = 314.0
+margin/bottom = 148.0
+text = "Minutes"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="countdown timer label hours" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 185.0
+margin/top = 134.0
+margin/right = 225.0
+margin/bottom = 148.0
+text = "Hours"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -290,5 +415,7 @@ enabled_focus_mode = 2
 shortcut = null
 icon = ExtResource( 5 )
 flat = false
+
+[connection signal="timeout" from="countdown timer" to="." method="_on_countdown_timer_timeout"]
 
 

@@ -6,8 +6,8 @@
 
 extends Node2D
 
-var program_version = "0.1"
-var version_name = "Serviceable"
+var program_version = "0.2"
+var version_name = "Functional"
 
 var debug_mode = true #not used for anything yet
 
@@ -47,6 +47,16 @@ func _ready():
 func _fixed_process(delta):
 	
 	
+		#If shift is not pressed, but enter is, then make it an official entry and drop the focus.
+	if Input.is_key_pressed(KEY_SHIFT) == false and (Input.is_key_pressed(KEY_RETURN) or Input.is_key_pressed(KEY_ENTER)) == true:
+		if get_node("details editor").has_focus():
+			get_node("details editor").release_focus()
+		elif get_node("countdown timer editor seconds").has_focus():
+			get_node("countdown timer editor seconds").release_focus()
+		elif get_node("announce editor").has_focus():
+			get_node("announce editor").release_focus()
+	
+	
 	if (focused_editor == ""):
 		#don't show the label, but do show the editor while the editor has focus
 		if get_node("announce editor").has_focus():
@@ -55,34 +65,25 @@ func _fixed_process(delta):
 			focused_editor = "announce editor"
 			#if any editor is focused then it will hide the label
 			get_node(focused_label).hide()
-		elif get_node("countdown timer editor").has_focus():
-			focused_label = "countdown timer display"
-			focused_editor = "countdown timer editor"
+		elif get_node("countdown timer editor seconds").has_focus():
+			focused_label = "countdown timer display seconds"
+			focused_editor = "countdown timer editor seconds"
 			get_node(focused_label).hide()
+		elif get_node("countdown timer editor minutes").has_focus():
+			focused_label = "countdown timer display minutes"
+			focused_editor = "countdown timer editor minutes"
+			get_node(focused_label).hide()
+		elif get_node("countdown timer editor hours").has_focus():
+			focused_label = "countdown timer display hours"
+			focused_editor = "countdown timer editor hours"
+			get_node(focused_label).hide()
+		
 		elif get_node("details editor").has_focus():
 			focused_label = "details display"
 			focused_editor = "details editor"
 			get_node(focused_label).hide()
 	
-	#If focus is lost, then update the label and make the "focused" no longer focused! 
-	#Should only trigger one frame because the very condition for it is being changed
-	if focused_editor != "" and !(get_node(focused_editor).has_focus()):
-		var new_label_text = get_node(focused_editor).get_text()
-		get_node(focused_label).set_text(new_label_text)
-		get_node(focused_label).show()
-		
-		if focused_editor == "countdown timer editor":
-			countdown_timer.set_wait_time(float(get_node(focused_editor).get_text()))
-			
-			
-			timer_state = "set"
-			print("timer is set")
-		
-		get_node(focused_editor).set_text("")
-		
-		print("result: "+get_node(focused_label).get_text())
-		focused_label = ""
-		focused_editor = ""
+
 		
 		
 	
@@ -105,23 +106,18 @@ func _fixed_process(delta):
 		var new_countdown_time
 		#show countdown timer editor if it's not in focus
 		#If countdown timer editor is focused, release it so it can show the timer
-		if get_node("countdown timer editor").has_focus():
-			get_node("countdown timer editor").release_focus()
+		if get_node("countdown timer editor seconds").has_focus():
+			get_node("countdown timer editor seconds").release_focus()
 		#if countdown timer editor is reset, give it focus
-		elif (get_node("countdown timer editor").get_text() != "") and ((float(get_node("countdown timer editor").get_text())) <= 0) :
-			get_node("countdown timer editor").grab_focus()
-			get_node("countdown timer editor").set_text("")
+		elif (get_node("countdown timer editor seconds").get_text() != "") and ((float(get_node("countdown timer editor seconds").get_text())) <= 0) :
+			get_node("countdown timer editor seconds").grab_focus()
+			get_node("countdown timer editor seconds").set_text("")
 		
 		play_pressed = true
 	
-	#when focus is lost, set the timer
-	if focused_editor == "countdown timer editor" and !(get_node("countdown timer editor").has_focus()):
-		if int(get_node("countdown timer editor").get_text()):
-			countdown_timer.set_wait_time(float(get_node("countdown timer editor").get_text()))
-			timer_state = "set"
-			print("valid time entry")
-		else:
-			print("Not a valid entry!")
+
+	
+	
 	
 	#set play state from pause state
 	if timer_state == "pause" and get_node("play button").is_pressed() and play_pressed == false:
@@ -169,38 +165,131 @@ func _fixed_process(delta):
 	#unattended states
 	if timer_state == "play":
 		#update the countdown timer display
-		get_node("countdown timer display").set_text(str(countdown_timer.get_time_left()))
-		get_node("countdown timer display").add_color_override("orange","orange")
+		var timer_time_left = countdown_timer.get_time_left()
+		timer_time_left = "%0.3f" % timer_time_left
+		#timer_time_left.resize(5)
+		print("timer time left: "+str(timer_time_left))
+		get_node("countdown timer display seconds").set_text(str(timer_time_left))
+		#I don't know what I'm doing here with these colors
+		#get_node("countdown timer display seconds").get_color("orange",Color)
 		
-	
-	
-	
-#	#when detail editor is shown
-#	if details_clicked == true:
-#		#if the editor isn't visible
-#		if !(get_node("details editor").is_visible()):
-#			get_node("details editor").set_hidden(false)
-#			
-#		#if clicked away anywhere else on screen, disable details_clicked
-#		
-#		
-#	else:
-#		if get_node("details editor").is_visible():
-#			get_node("details editor").set_hidden(true)
-#		
-#		#show detail editor when clicked
-	
-	#If shift is not pressed, but enter is, then make it an official entry and drop the focus.
-	if Input.is_key_pressed(KEY_SHIFT) == false and (Input.is_key_pressed(KEY_RETURN) or Input.is_key_pressed(KEY_ENTER)) == true:
-		if get_node("details editor").has_focus():
-			get_node("details editor").release_focus()
-		elif get_node("countdown timer editor").has_focus():
-			get_node("countdown timer editor").release_focus()
-		elif get_node("announce editor").has_focus():
-			get_node("announce editor").release_focus()
 		
 		
 	
+	#print(focused_editor+"     "+str(get_node("countdown timer editor seconds").has_focus()))
+	
+	
+	#when focus is lost on the seconds editor, set the timer
+	if focused_editor == "countdown timer editor seconds" and !(get_node("countdown timer editor seconds").has_focus()):
+		
+		if int(get_node(focused_editor).get_text()):
+			
+			timer_state = "set"
+			
+			#During user input, convert seconds to hours: for every 3600 seconds, an hour is tallied
+			if int(get_node(focused_editor).get_text()) > 3600:
+				var new_hours = int(get_node(focused_editor).get_text()) / 3600
+				while new_hours > 0:
+					get_node("countdown timer display hours").set_text(str(1 + int(get_node("countdown timer display hours").get_text())))
+					new_hours = new_hours - 1
+					print("hour added from seconds")
+					get_node("countdown timer editor seconds").set_text(str(int(get_node("countdown timer editor seconds").get_text()) - 3600 ))
+				
+			#Convert seconds to minutes: for every 60 seconds, a minute is tallied
+			if int(get_node(focused_editor).get_text()) > 60:
+				
+				var new_minutes = int(get_node(focused_editor).get_text()) / 60
+				while new_minutes > 0:
+					get_node("countdown timer display minutes").set_text(str(1 + int(get_node("countdown timer display minutes").get_text())))
+					new_minutes = new_minutes - 1
+					print("minute added from seconds")
+					get_node("countdown timer editor seconds").set_text(str(int(get_node("countdown timer editor seconds").get_text()) - 60 ))
+			
+			
+			
+			var remainder_for_seconds = int(get_node("countdown timer display seconds").get_text()) % 60
+			print("remainder for seconds: "+str(remainder_for_seconds))
+			
+			countdown_timer.set_wait_time(float(get_node(focused_editor).get_text()))
+			
+			print("valid time entry")
+		else:
+			print("Not a valid entry!")
+			
+	#when focus is lost on the hours editor, set the timer
+	if focused_editor == "countdown timer editor minutes" and !(get_node("countdown timer editor minutes").has_focus()):
+		if int(get_node(focused_editor).get_text()):
+			countdown_timer.set_wait_time(float(get_node(focused_editor).get_text()))
+			timer_state = "set"
+			print("valid time entry")
+			
+			#convert minutes to hours: for every 60 minutes, an hour is tallied
+			if int(get_node("countdown timer display minutes").get_text()) > 60:
+				
+				var new_minutes = int(get_node("countdown timer display minutes").get_text()) / 60
+				while new_minutes > 0:
+					get_node("countdown timer display hours").set_text(str(1 + int(get_node("countdown timer display hours").get_text())))
+					new_minutes = new_minutes - 1
+				
+		else:
+			print("Not a valid entry!")
+	
+	#when focus is lost on the hours editor, set the timer
+	if focused_editor == "countdown timer editor hours" and !(get_node("countdown timer editor hours").has_focus()):
+		if int(get_node(focused_editor).get_text()):
+			if int(get_node(focused_editor).get_text()) < 9:
+			
+				countdown_timer.set_wait_time(float(get_node(focused_editor).get_text()))
+				timer_state = "set"
+				print("valid time entry")
+			else:
+				print("Hours exceeding 9! Are you really going to leave your audience hanging that long...?")
+		else:
+			print("Not a valid entry!")
 	
 	
 	
+	
+	
+	#If focus is lost, then update the label! 
+	#Should only trigger one frame because the very condition for it is being changed
+	if focused_editor != "" and !(get_node(focused_editor).has_focus()):
+		var new_label_text = get_node(focused_editor).get_text()
+		get_node(focused_label).set_text(new_label_text)
+		get_node(focused_label).show()
+		
+		if focused_editor == "countdown timer editor seconds":
+			countdown_timer.set_wait_time(float(get_node(focused_editor).get_text()))
+			
+			
+			timer_state = "set"
+			print("timer is set")
+		
+		get_node(focused_editor).set_text("")
+		
+		print("result: "+get_node(focused_label).get_text())
+		focused_label = ""
+		focused_editor = ""
+		
+	
+
+
+func _on_countdown_timer_timeout():
+	#minute deduction
+	if int(get_node("countdown timer display minutes").get_text()) > 0:
+		get_node("countdown timer display minutes").set_text( str( int(get_node("countdown timer display minutes").get_text()) - 1 ) )
+		get_node("countdown timer").set_wait_time(60)
+		get_node("countdown timer").start()
+	#hour deduction
+	if int(get_node("countdown timer display minutes").get_text()) == 0 and int(get_node("countdown timer display hours").get_text()) > 0:
+		get_node("countdown timer display hours").set_text( str( int(get_node("countdown timer display hours").get_text()) - 1 ) )
+		get_node("countdown timer display minutes").set_text( str( 59 ) )
+		get_node("countdown timer").set_wait_time(60)
+		get_node("countdown timer").start()
+		
+	
+	
+
+
+
+#End of program
