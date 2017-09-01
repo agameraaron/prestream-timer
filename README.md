@@ -2,6 +2,8 @@
 A tool to announce when a stream will start. 
 For use with a streaming program such as 'OBS'.
 
+![alt text](https://raw.githubusercontent.com/agameraaron/prestream-timer/master/v0_2%20example.gif)
+
 MIT licensed, created by AGamerAaron of "VAR Team".
 
 Created & editable in the Godot Engine. https://godotengine.org/
