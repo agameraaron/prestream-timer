@@ -3,8 +3,11 @@ A tool to announce when a stream will start.
 For use with a streaming program such as 'OBS'.
 
 Downloads:
+
 Linux: https://github.com/agameraaron/prestream-timer/releases/download/v0.3/prestream_timer_linux_0_3.7z
+
 Windows: https://github.com/agameraaron/prestream-timer/releases/download/v0.3/prestream_timer_windows_0_3.zip
+
 OSX: https://github.com/agameraaron/prestream-timer/releases/download/v0.3/prestream_timer_osx_0_3.zip
 
 ![alt text](https://raw.githubusercontent.com/agameraaron/prestream-timer/master/demo0.gif) 
