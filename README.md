@@ -10,8 +10,8 @@ Windows: https://github.com/agameraaron/prestream-timer/releases/download/v0.3/p
 
 OSX: https://github.com/agameraaron/prestream-timer/releases/download/v0.3/prestream_timer_osx_0_3.zip
 
-![alt text](https://raw.githubusercontent.com/agameraaron/prestream-timer/master/demo0.gif) 
-![alt text](https://raw.githubusercontent.com/agameraaron/prestream-timer/master/demo1.gif)
+![alt text](https://raw.githubusercontent.com/agameraaron/prestream-timer/master/demo1.gif) 
+![alt text](https://raw.githubusercontent.com/agameraaron/prestream-timer/master/demo2.gif)
 
 MIT licensed, created by AGamerAaron of "VAR Team".
 
