@@ -12,6 +12,11 @@ For use with a streaming program such as 'OBS'.
 ![alt text](https://raw.githubusercontent.com/agameraaron/prestream-timer/master/demo1.gif)*
 ![alt text](https://raw.githubusercontent.com/agameraaron/prestream-timer/master/demo2.gif)*
 
+# About:
+MIT licensed, created by AGamerAaron.
+
+Created & editable in Godot Engine v3.0: https://godotengine.org/
+
 # Features:
 - Countdown timer
 - Editable footer and header
@@ -23,15 +28,16 @@ High priority:
 - When minutes are input, modulo by 60 and add to hours.
 - When minutes are input, convert decimal entries to seconds.
 - When hours are input, convert decimal entries to minutes & seconds.
-- Resize the option screen to cover the full viewport
+- Resize the option screen to cover the full viewport.
 - Create option to hide time name labels.
 - Create 'Reset to Defaults' option.
 - Update icons to cohere better in size as a group.
 - Update previews.
 
 Low priority:
-- Auto-save settings on returning to the timer from the options
-- Auto-load settings upon startup
+- Auto-save settings on returning to the timer from the options.
+- Auto-load settings upon startup.
+- Custom sound plays at timeout.
 - Create cut-out border and option to show it.
 - Center the text editors during editing, if possible.
 - Create font change option for the timer.
@@ -44,11 +50,6 @@ Low priority:
 - Create color change option for the time type labels.
 - Create font size option for the time type labels.
 
-# About:
-MIT licensed, created by AGamerAaron.
-
-Created & editable in Godot Engine v3.0: https://godotengine.org/
-
 # History:
-I needed countdown timer for announcing streams preferably alongside some text. I came up with this program to fulfill that need. I'm sure others have done it too, but I didn't bother looking. Felt like a good excuse to make my own little streaming tool.
+I needed a countdown timer for announcing streams preferably alongside some text. I came up with this program to fulfill that need. I'm sure others have done it too, but I didn't bother looking. Felt like a good excuse to make my own little streaming tool.
 
