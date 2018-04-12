@@ -4,29 +4,38 @@ For use with a streaming program such as 'OBS'.
 
 Downloads:
 
-Linux: https://github.com/agameraaron/prestream-timer/releases/download/v0.3/prestream_timer_linux_0_3.7z
+Linux 64-bit: https://github.com/agameraaron/prestream-timer/releases/download/v0.4/prestream_timer_0_4_linux64.7z
 
-Windows: https://github.com/agameraaron/prestream-timer/releases/download/v0.3/prestream_timer_windows_0_3.zip
+Linux 32-bit: https://github.com/agameraaron/prestream-timer/releases/download/v0.4/prestream_timer_0_4_linux32.7z
 
-OSX: https://github.com/agameraaron/prestream-timer/releases/download/v0.3/prestream_timer_osx_0_3.zip
+Windows 64-bit: https://github.com/agameraaron/prestream-timer/releases/download/v0.4/prestream_timer_0_4_windows64.zip
+
+Windows 32-bit: https://github.com/agameraaron/prestream-timer/releases/download/v0.4/prestream_timer_0_4_windows32.zip
+
+OSX: https://github.com/agameraaron/prestream-timer/releases/download/v0.3/prestream_timer_0_4_osx.zip
 
 ![alt text](https://raw.githubusercontent.com/agameraaron/prestream-timer/master/demo1.gif) 
 ![alt text](https://raw.githubusercontent.com/agameraaron/prestream-timer/master/demo2.gif)
 
-MIT licensed, created by AGamerAaron of "VAR Team".
+MIT licensed, created by AGamerAaron.
 
-Created & editable in the Godot Engine. https://godotengine.org/
+Created & editable in Godot Engine v3.0: https://godotengine.org/
 
 Features:
 - Countdown timer
 - Editable footer and header
+- Custom colors
 
 History:
 I needed countdown timer for announcing streams preferably alongside some text. I came up with this program to fulfill that need. I'm sure others have done it too, but I didn't bother looking. Felt like a good excuse to make my own little streaming tool.
 
 To do:
-- When minutes are input, divide by 60 and add to hours.
+- When minutes are input, modulo by 60 and add to hours.
 - When minutes are input, convert decimal entries to seconds.
 - When hours are input, convert decimal entries to minutes & seconds.
-- Selectable background color.
-- The header and footer text editors should cohere with the text editors behind their display labels.
+- Create 'Reset to Defaults' option
+- Create options to control the header, footer and text editing colors
+- Create option to hide time name labels
+- Create cut-out border and option to show it
+- Center the text editors during editing, if possible.
+
