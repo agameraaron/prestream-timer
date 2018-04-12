@@ -6,11 +6,12 @@
 
 extends Node2D
 
-var program_version = "0.3"
-var version_name = "Usable"
+var program_version = "0.4"
+var version_name = "Colorful"
 
 var debug_mode = true #not used for anything yet
 
+var program_state = "timer"
 var timer_state = "stop"
 var countdown_timer
 
@@ -25,13 +26,14 @@ var hour_max_limit_popup_active = false
 
 var play_graphic
 var pause_graphic
-var white_text_color = Color(1.0,1.0,1.0,1.0)
-var red_text_color = Color(1.0,0.1,0.1,1.0)
-var green_text_color = Color(0.0,0.9,0.0,1.0)
-var yellow_text_color = Color(0.9,0.8,0.0,1.0)
 
-var seconds_timer_reset_workaround = false
+var bg_color = Color(0.1,0.1,0.1,1.0)
+var set_text_color = Color(1.0,1.0,1.0,1.0)
+var stop_text_color = Color(1.0,0.1,0.1,1.0)
+var play_text_color = Color(0.0,0.9,0.0,1.0)
+var pause_text_color = Color(0.9,0.8,0.0,1.0)
 
+var about = "How to use:\n1. Click on the hours to change the amount of hours the timer will countdown from. Same with the minutes & seconds.\n2. Click on the play icon to countdown.\n3. Stream to others to let them know precisely when you will be showing up.\n\nAbout:\nVersion "+program_version+", Created by AGamerAaron.\nMIT licensed. Feel free to contibute on Github!\n\nCreated in the Godot Engine.\nThanks to Juan, Ariel & all contributors for creating such a wonderful game engine."
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -55,15 +57,83 @@ func _ready():
 	#centering of the edit slots for a consistent look
 	#get_node("countdown timer editor minutes").align("center")
 	
+	#update about page to include version
+	get_node("about screen/about info").set_text(about)
+	
+	#set default bg color
+	get_node("background").color = bg_color
+	
+	set_default_color_choices()
+	
+
 
 func _physics_process(delta):
 	
 	#report the timer_state
 	#print(timer_state)
+	if program_state == "options":
+		options()
+	elif program_state == "timer":
+		timer()
+	elif program_state == "about":
+		about()
+	
+
+func set_default_color_choices():
+	get_node("options screen/bg color picker").set_pick_color(bg_color)
+	get_node("options screen/stop color picker").set_pick_color(stop_text_color)
+	get_node("options screen/set color picker").set_pick_color(set_text_color)
+	get_node("options screen/play color picker").set_pick_color(play_text_color)
+	get_node("options screen/pause color picker").set_pick_color(pause_text_color)
+
+func about():
+	if get_node("about screen/back button").pressed:
+		get_node("about screen").hide()
+		program_state = "timer"
+
+func options():
+	if get_node("options screen/back button").pressed:
+		
+		get_node("options screen").hide()
+		program_state = "timer"
+	
+	#set values
+	stop_text_color = get_node("options screen/stop color picker").get_pick_color()
+	set_text_color = get_node("options screen/set color picker").get_pick_color()
+	play_text_color = get_node("options screen/play color picker").get_pick_color()
+	pause_text_color = get_node("options screen/pause color picker").get_pick_color()
+	
+	#update colors as they are changed
+	get_node("background").set_frame_color(Color(get_node("options screen/bg color picker").get_pick_color()))
+	
+	if get_node("options screen/stop color picker").get_popup().visible:
+		get_node("countdown timer display seconds").modulate = get_node("options screen/stop color picker").get_pick_color()
+		get_node("countdown timer display minutes").modulate = get_node("options screen/stop color picker").get_pick_color()
+		get_node("countdown timer display hours").modulate = get_node("options screen/stop color picker").get_pick_color()
+	elif get_node("options screen/set color picker").get_popup().visible:
+		get_node("countdown timer display seconds").modulate = get_node("options screen/set color picker").get_pick_color()
+		get_node("countdown timer display minutes").modulate = get_node("options screen/set color picker").get_pick_color()
+		get_node("countdown timer display hours").modulate = get_node("options screen/set color picker").get_pick_color()
+	elif get_node("options screen/play color picker").get_popup().visible:
+		get_node("countdown timer display seconds").modulate = get_node("options screen/play color picker").get_pick_color()
+		get_node("countdown timer display minutes").modulate = get_node("options screen/play color picker").get_pick_color()
+		get_node("countdown timer display hours").modulate = get_node("options screen/play color picker").get_pick_color()
+	elif get_node("options screen/pause color picker").get_popup().visible:
+		get_node("countdown timer display seconds").modulate = get_node("options screen/pause color picker").get_pick_color()
+		get_node("countdown timer display minutes").modulate = get_node("options screen/pause color picker").get_pick_color()
+		get_node("countdown timer display hours").modulate = get_node("options screen/pause color picker").get_pick_color()
 	
 	
+func timer():
+	if get_node("options button").pressed:
+		program_state = "options"
+		get_node("options screen").show()
 	
-		#If shift is not pressed, but enter is, then make it an official entry and drop the focus.
+	if get_node("about button").pressed:
+		program_state = "about"
+		get_node("about screen").show()
+	
+	#If shift is not pressed, but enter is, then make it an official entry and drop the focus.
 	if Input.is_key_pressed(KEY_SHIFT) == false and (Input.is_key_pressed(KEY_KP_ENTER) or Input.is_key_pressed(KEY_ENTER)) == true:
 		#Seems it would release focus, yet I can go from one focus to another with no issues.
 		# I feel like a bug could be produced here given there is no filter for it going through multiple loops.
@@ -119,6 +189,7 @@ func _physics_process(delta):
 		
 		#countdown_timer.set_active(true)
 		#print(str(countdown_timer.get_wait_time()))
+		countdown_timer.emit_signal("timeout")
 		countdown_timer.start()
 		
 		play_pressed = true
@@ -151,7 +222,7 @@ func _physics_process(delta):
 		#show countdown timer editor
 		#countdown_timer.set_active(true)
 		countdown_timer.set_paused(false)
-		
+		countdown_timer.start()
 		play_pressed = true
 		timer_state = "play"
 		print("started timer")
@@ -175,11 +246,11 @@ func _physics_process(delta):
 	
 	#if the stop button is pressed, not dependent on timer state
 	if get_node("stop button").is_pressed() and stop_pressed == false:
-		countdown_timer.stop()
+		
 		#countdown_timer.set_wait_time(0)
-		#countdown_timer.set_wait_time(0.0001)
+		countdown_timer.set_wait_time(0.0001)
 		countdown_timer.emit_signal('timeout')
-		#seconds_timer_reset_workaround = true
+		countdown_timer.stop()
 		
 		stop_pressed = true
 		timer_state = "stop"
@@ -191,41 +262,44 @@ func _physics_process(delta):
 		get_node("countdown timer display minutes").set_text("00")
 		get_node("countdown timer display hours").set_text("0")
 		
+		#reset editors in case they were in focus when stop is pressed
+		get_node("countdown timer editor seconds").set_text("")
+		get_node("countdown timer editor minutes").set_text("")
+		get_node("countdown timer editor hours").set_text("")
+		
+		
+		
 	
 	#when the stop button is released
 	if !(get_node("stop button").is_pressed()):
 		stop_pressed = false
 	
 	
+	#############################
+	# PLAY STATE
+	#############################
 	
-	#unattended states
 	if timer_state == "play":
-		
-		
-		#a hack because of the timer not being able to be set to zero
-		#actually, just going to make it equal a very small time instead until this is fixed upstream
-#		if seconds_timer_reset_workaround == true:
-#			countdown_timer.stop()
-#			timer_state = "stop"
-#			seconds_timer_reset_workaround = false
 		
 		#update the countdown timer display
 		var timer_time_left = countdown_timer.get_time_left()
 		var timer_time_left_string = "%0.3f" % timer_time_left  #Wait... what's this do again?? It's changing it to a string and...
 		
 		#timer_time_left.resize(5)
-		#print("timer time left: "+str(timer_time_left))
+		#
+		update_debug()
+		
 		get_node("countdown timer display seconds").set_text(str(timer_time_left_string))
 		#I don't know what I'm doing here with these colors
 		#get_node("countdown timer display seconds").get_color("orange",Color)
 		
 		if int(get_node("countdown timer display minutes").get_text()) == 0 and int(get_node("countdown timer display hours").get_text()) == 0:
 			if timer_time_left < 0.001:
-				countdown_timer.stop()
+				
 				#countdown_timer.set_wait_time(0.0001)
 				countdown_timer.emit_signal('timeout')
+				countdown_timer.stop()
 				#countdown_timer.set_wait_time(0)
-				#seconds_timer_reset_workaround = true
 				print("timer timed out")
 				timer_state = "stop"
 				get_node("play button").set_button_icon(play_graphic)
@@ -234,6 +308,9 @@ func _physics_process(delta):
 				get_node("countdown timer display seconds").set_text("00")
 			
 		
+	######################
+	#END OF PLAY STATE
+	#####################
 	
 	#print(focused_editor+"     "+str(get_node("countdown timer editor seconds").has_focus()))
 	
@@ -274,13 +351,13 @@ func _physics_process(delta):
 			#print("valid second time entry")
 		else: #either zero or a non-number
 			print("Not a valid entry!")
-			#reset everything seconds related to zero here
+			#reset everything seconds related to zero out here
 			timer_state = "stop"
 			#countdown_timer.set_wait_time(0)
 			#print("Bug!: "+str(countdown_timer.get_wait_time())) #Why is it refusing to set a zero?? Gotta be an upstream bug...
-			#countdown_timer.set_wait_time(0.0001)
 			countdown_timer.emit_signal('timeout')
-			seconds_timer_reset_workaround = true
+			countdown_timer.stop()
+			countdown_timer.set_wait_time(0.0001)
 			
 			get_node("countdown timer editor seconds").set_text("00")
 			get_node("countdown timer display seconds").set_text("00")
@@ -303,6 +380,15 @@ func _physics_process(delta):
 				
 		else:
 			print("Not a valid entry!")
+			#reset everything seconds related to zero out here
+			timer_state = "stop"
+			#countdown_timer.set_wait_time(0)
+			#print("Bug!: "+str(countdown_timer.get_wait_time())) #Why is it refusing to set a zero?? Gotta be an upstream bug...
+			#countdown_timer.set_wait_time(0.0001)
+			countdown_timer.emit_signal('timeout')
+			
+			get_node("countdown timer editor minutes").set_text("00")
+			get_node("countdown timer display minutes").set_text("00")
 	
 	#when focus is lost on the hours editor, set the timer
 	if focused_editor == "countdown timer editor hours" and !(get_node("countdown timer editor hours").has_focus()):
@@ -319,10 +405,18 @@ func _physics_process(delta):
 				#print("Hours exceeding 99! Are you really going to leave your audience hanging that long...?")
 		else:
 			print("Not a valid entry!")
+			#reset everything seconds related to zero out here
+			timer_state = "stop"
+			#countdown_timer.set_wait_time(0)
+			#print("Bug!: "+str(countdown_timer.get_wait_time())) #Why is it refusing to set a zero?? Gotta be an upstream bug...
+			#countdown_timer.set_wait_time(0.0001)
+			countdown_timer.emit_signal('timeout')
+			
+			get_node("countdown timer editor hours").set_text("00")
+			get_node("countdown timer display hours").set_text("00")
 	
 	
 	
-	#This all appears obsolesced... probably fixed in Godot Engine 3.0
 	
 	#If focus is lost, then update the label! 
 	#Should only trigger one frame because the very condition for it is being changed
@@ -350,21 +444,21 @@ func _physics_process(delta):
 
 func timer_text_color():
 	if timer_state == "stop":
-		get_node("countdown timer display seconds").modulate = (red_text_color)#set_font_color(red_text_color)
-		get_node("countdown timer display minutes").modulate = (red_text_color)
-		get_node("countdown timer display hours").modulate = (red_text_color)
+		get_node("countdown timer display seconds").modulate = (stop_text_color)#set_font_color(red_text_color)
+		get_node("countdown timer display minutes").modulate = (stop_text_color)
+		get_node("countdown timer display hours").modulate = (stop_text_color)
 	elif timer_state == "pause":
-		get_node("countdown timer display seconds").modulate = (yellow_text_color)
-		get_node("countdown timer display minutes").modulate = (yellow_text_color)
-		get_node("countdown timer display hours").modulate = (yellow_text_color)
+		get_node("countdown timer display seconds").modulate = (pause_text_color)
+		get_node("countdown timer display minutes").modulate = (pause_text_color)
+		get_node("countdown timer display hours").modulate = (pause_text_color)
 	elif timer_state == "play":
-		get_node("countdown timer display seconds").modulate = (green_text_color)
-		get_node("countdown timer display minutes").modulate = (green_text_color)
-		get_node("countdown timer display hours").modulate = (green_text_color)
+		get_node("countdown timer display seconds").modulate = (play_text_color)
+		get_node("countdown timer display minutes").modulate = (play_text_color)
+		get_node("countdown timer display hours").modulate = (play_text_color)
 	elif timer_state == "set":
-		get_node("countdown timer display seconds").modulate = (white_text_color)
-		get_node("countdown timer display minutes").modulate = (white_text_color)
-		get_node("countdown timer display hours").modulate = (white_text_color)
+		get_node("countdown timer display seconds").modulate = (set_text_color)
+		get_node("countdown timer display minutes").modulate = (set_text_color)
+		get_node("countdown timer display hours").modulate = (set_text_color)
 
 
 func _on_countdown_timer_timeout():
@@ -374,16 +468,22 @@ func _on_countdown_timer_timeout():
 		get_node("countdown timer").set_wait_time(60)
 		get_node("countdown timer").start()
 	#hour deduction
+	
 	if int(get_node("countdown timer display minutes").get_text()) == 0 and int(get_node("countdown timer display hours").get_text()) > 0:
 		get_node("countdown timer display hours").set_text( str( int(get_node("countdown timer display hours").get_text()) - 1 ) )
 		get_node("countdown timer display minutes").set_text( str( 59 ) )
 		get_node("countdown timer").set_wait_time(60)
 		get_node("countdown timer").start()
 		
+		
 	
 	
 
-
+func update_debug():
+	get_node("debug interface/current time").set_text(get_node("countdown timer editor minutes").get_text())
+	get_node("debug interface/timer").set_text(str(get_node("countdown timer").get_time_left()))
+	
+	
 
 func _on_hour_max_limit_error_message_box_button_pressed():
 	hour_max_limit_popup_active = false

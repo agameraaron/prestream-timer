@@ -1,11 +1,15 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/pixel_operator/PixelOperator.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/fonts/matias_2/Matias.otf" type="DynamicFontData" id=3]
-[ext_resource path="res://assets/sprites/play_and_stop.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/play.png" type="Texture" id=4]
 [ext_resource path="res://assets/sprites/stop.png" type="Texture" id=5]
-[ext_resource path="res://assets/sprites/curtain tileset.tres" type="TileSet" id=6]
+[ext_resource path="res://assets/sprites/settings.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/about.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/curtain tileset.tres" type="TileSet" id=8]
+[ext_resource path="res://assets/sprites/go back.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/about_godot.png" type="Texture" id=10]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -51,10 +55,11 @@ anti_aliasing_size = 1
 
 [sub_resource type="DynamicFont" id=4]
 
-size = 16
+size = 32
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 2 )
+_sections_unfolded = [ "Settings" ]
 
 [sub_resource type="DynamicFont" id=5]
 
@@ -144,7 +149,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-color = Color( 0, 0, 0, 1 )
+color = Color( 0.1, 0.1, 0.1, 1 )
 _sections_unfolded = [ "Rect" ]
 
 [node name="announce editor" type="TextEdit" parent="." index="1"]
@@ -153,10 +158,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 47.0
-margin_top = 13.0
-margin_right = 547.0
-margin_bottom = 125.0
+margin_left = 43.0
+margin_top = 16.0
+margin_right = 543.0
+margin_bottom = 116.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -193,10 +198,11 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 47.0
-margin_top = 13.0
-margin_right = 547.0
-margin_bottom = 125.0
+margin_left = 43.0
+margin_top = 16.0
+margin_right = 543.0
+margin_bottom = 116.0
+grow_vertical = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -210,7 +216,8 @@ valign = 2
 autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
-max_lines_visible = -1
+max_lines_visible = 3
+_sections_unfolded = [ "Grow Direction" ]
 
 [node name="details editor" type="TextEdit" parent="." index="3"]
 
@@ -218,10 +225,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 44.0
-margin_top = 211.0
-margin_right = 544.0
-margin_bottom = 323.0
+margin_left = 40.0
+margin_top = 229.0
+margin_right = 540.0
+margin_bottom = 329.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -258,10 +265,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 44.0
-margin_top = 211.0
-margin_right = 544.0
-margin_bottom = 323.0
+margin_left = 40.0
+margin_top = 229.0
+margin_right = 540.0
+margin_bottom = 329.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -274,7 +281,7 @@ align = 1
 autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
-max_lines_visible = -1
+max_lines_visible = 3
 
 [node name="countdown timer" type="Timer" parent="." index="5"]
 
@@ -290,9 +297,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 339.0
-margin_top = 149.0
+margin_top = 160.0
 margin_right = 490.0
-margin_bottom = 210.0
+margin_bottom = 221.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -331,9 +338,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 339.0
-margin_top = 149.0
+margin_top = 160.0
 margin_right = 504.0
-margin_bottom = 214.0
+margin_bottom = 225.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -347,7 +354,7 @@ clip_text = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Visibility", "custom_colors" ]
 
 [node name="countdown timer editor minutes" type="TextEdit" parent="." index="8"]
 
@@ -356,9 +363,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 250.0
-margin_top = 149.0
+margin_top = 160.0
 margin_right = 317.0
-margin_bottom = 210.0
+margin_bottom = 221.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -396,9 +403,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 250.0
-margin_top = 149.0
+margin_top = 160.0
 margin_right = 318.0
-margin_bottom = 214.0
+margin_bottom = 225.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -420,9 +427,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 176.0
-margin_top = 149.0
+margin_top = 160.0
 margin_right = 242.0
-margin_bottom = 210.0
+margin_bottom = 221.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -460,9 +467,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 176.0
-margin_top = 149.0
+margin_top = 160.0
 margin_right = 243.0
-margin_bottom = 214.0
+margin_bottom = 225.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -484,9 +491,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 339.0
-margin_top = 134.0
+margin_top = 145.0
 margin_right = 392.0
-margin_bottom = 148.0
+margin_bottom = 159.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -505,9 +512,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 259.0
-margin_top = 134.0
+margin_top = 145.0
 margin_right = 311.0
-margin_bottom = 148.0
+margin_bottom = 159.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -526,9 +533,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 191.0
-margin_top = 134.0
+margin_top = 145.0
 margin_right = 231.0
-margin_bottom = 148.0
+margin_bottom = 159.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -546,10 +553,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 601.0
-margin_top = 181.0
-margin_right = 645.0
-margin_bottom = 219.0
+margin_left = 600.0
+margin_top = 142.0
+margin_right = 644.0
+margin_bottom = 180.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -571,10 +578,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 601.0
-margin_top = 141.0
-margin_right = 645.0
-margin_bottom = 179.0
+margin_left = 600.0
+margin_top = 180.0
+margin_right = 644.0
+margin_bottom = 218.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -589,12 +596,66 @@ group = null
 icon = ExtResource( 5 )
 flat = false
 align = 1
+_sections_unfolded = [ "Rect" ]
 
-[node name="popup curtain" type="TileMap" parent="." index="17"]
+[node name="options button" type="Button" parent="." index="17"]
 
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 600.0
+margin_top = 284.0
+margin_right = 644.0
+margin_bottom = 322.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+icon = ExtResource( 6 )
+flat = false
+clip_text = true
+align = 1
+
+[node name="about button" type="Button" parent="." index="18"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 600.0
+margin_top = 322.0
+margin_right = 644.0
+margin_bottom = 360.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+icon = ExtResource( 7 )
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="popup curtain" type="TileMap" parent="." index="19"]
+
+editor/display_folded = true
 visible = false
 mode = 0
-tile_set = ExtResource( 6 )
+tile_set = ExtResource( 8 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -684,6 +745,424 @@ group = null
 text = "Oh..."
 flat = false
 align = 1
+
+[node name="options screen" type="ColorRect" parent="." index="20"]
+
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 483.0
+margin_right = 640.0
+margin_bottom = 360.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.101562, 0.0975952, 0.0975952, 1 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="bg color label" type="Label" parent="options screen" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 12.0
+margin_top = 15.0
+margin_right = 140.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Chroma color"
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="bg color picker" type="ColorPickerButton" parent="options screen" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 117.0
+margin_top = 1.0
+margin_right = 161.0
+margin_bottom = 39.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+color = Color( 0, 0, 0, 1 )
+edit_alpha = true
+
+[node name="stop color label" type="Label" parent="options screen" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 12.0
+margin_top = 53.0
+margin_right = 140.0
+margin_bottom = 69.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Stop color"
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="stop color picker" type="ColorPickerButton" parent="options screen" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 117.0
+margin_top = 39.0
+margin_right = 161.0
+margin_bottom = 77.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+color = Color( 0, 0, 0, 1 )
+edit_alpha = true
+
+[node name="set color label" type="Label" parent="options screen" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 12.0
+margin_top = 91.0
+margin_right = 140.0
+margin_bottom = 107.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Set color"
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="set color picker" type="ColorPickerButton" parent="options screen" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 117.0
+margin_top = 77.0
+margin_right = 161.0
+margin_bottom = 115.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+color = Color( 0, 0, 0, 1 )
+edit_alpha = true
+
+[node name="play color label" type="Label" parent="options screen" index="6"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 12.0
+margin_top = 129.0
+margin_right = 140.0
+margin_bottom = 145.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Play color"
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="play color picker" type="ColorPickerButton" parent="options screen" index="7"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 117.0
+margin_top = 115.0
+margin_right = 161.0
+margin_bottom = 153.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+color = Color( 0, 0, 0, 1 )
+edit_alpha = true
+
+[node name="pause color label" type="Label" parent="options screen" index="8"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 12.0
+margin_top = 167.0
+margin_right = 140.0
+margin_bottom = 183.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Pause color"
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="pause color picker" type="ColorPickerButton" parent="options screen" index="9"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 117.0
+margin_top = 153.0
+margin_right = 161.0
+margin_bottom = 191.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+color = Color( 0, 0, 0, 1 )
+edit_alpha = true
+
+[node name="back button" type="Button" parent="options screen" index="10"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 117.0
+margin_top = 322.0
+margin_right = 161.0
+margin_bottom = 360.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+icon = ExtResource( 9 )
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="about screen" type="ColorRect" parent="." index="21"]
+
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 610.0
+margin_bottom = 330.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.101961, 0.0980392, 0.0980392, 1 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="about info" type="Label" parent="about screen" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 560.0
+margin_bottom = 300.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "How to use:
+1. Click on the hours to change the amount of hours the timer will countdown from. Same with the minutes & seconds. 
+2. Click on the play icon to countdown.
+3. Stream to others to let them know precisely when you will be showing up.
+
+About:
+Version 0.0, Created by AGamerAaron.
+MIT licensed. Feel free to contibute on Github!
+
+Created in the Godot Engine.
+Thanks to Juan, Ariel & all contributors for creating such a wonderful game engine."
+align = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Rect" ]
+
+[node name="back button" type="Button" parent="about screen" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 536.0
+margin_top = 262.0
+margin_right = 572.0
+margin_bottom = 292.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+icon = ExtResource( 9 )
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="godot engine logo" type="Sprite" parent="about screen" index="2"]
+
+position = Vector2( 287, 261 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 10 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="debug interface" type="Node2D" parent="." index="22"]
+
+visible = false
+
+[node name="current time" type="Label" parent="debug interface" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 325.0
+margin_right = 160.0
+margin_bottom = 339.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="timer" type="Label" parent="debug interface" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 342.0
+margin_right = 132.0
+margin_bottom = 360.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
 
 [connection signal="timeout" from="countdown timer" to="." method="_on_countdown_timer_timeout"]
 
