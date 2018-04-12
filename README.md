@@ -18,16 +18,31 @@ For use with a streaming program such as 'OBS'.
 - Custom colors
 
 # To-do:
+
+High priority:
 - When minutes are input, modulo by 60 and add to hours.
 - When minutes are input, convert decimal entries to seconds.
 - When hours are input, convert decimal entries to minutes & seconds.
-- Create 'Reset to Defaults' option.
-- Create options to control the header, footer and text editing colors.
+- Resize the option screen to cover the full viewport
 - Create option to hide time name labels.
-- Create cut-out border and option to show it.
-- Center the text editors during editing, if possible.
+- Create 'Reset to Defaults' option.
 - Update icons to cohere better in size as a group.
 - Update previews.
+
+Low priority:
+- Auto-save settings on returning to the timer from the options
+- Auto-load settings upon startup
+- Create cut-out border and option to show it.
+- Center the text editors during editing, if possible.
+- Create font change option for the timer.
+- Create font size option for the timer.
+- Create font change option for the header and footer.
+- Create color change option for the header and footer.
+- Create color change option for the header and footer editors.
+- Create font size change option for the header, footer & respective editors.
+- Create font change option for the time type labels.
+- Create color change option for the time type labels.
+- Create font size option for the time type labels.
 
 # About:
 MIT licensed, created by AGamerAaron.
