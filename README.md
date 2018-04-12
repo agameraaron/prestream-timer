@@ -4,15 +4,16 @@ For use with a streaming program such as 'OBS'.
 
 Downloads:
 
-Linux 64-bit: https://github.com/agameraaron/prestream-timer/releases/download/v0.4/prestream_timer_0_4_linux64.7z
-
-Linux 32-bit: https://github.com/agameraaron/prestream-timer/releases/download/v0.4/prestream_timer_0_4_linux32.7z
-
-Windows 64-bit: https://github.com/agameraaron/prestream-timer/releases/download/v0.4/prestream_timer_0_4_windows64.zip
-
-Windows 32-bit: https://github.com/agameraaron/prestream-timer/releases/download/v0.4/prestream_timer_0_4_windows32.zip
-
-OSX: https://github.com/agameraaron/prestream-timer/releases/download/v0.3/prestream_timer_0_4_osx.zip
+Linux 64-bit:
+https://github.com/agameraaron/prestream-timer/releases/download/v0.4/prestream_timer_0_4_linux64.7z
+Linux 32-bit: 
+https://github.com/agameraaron/prestream-timer/releases/download/v0.4/prestream_timer_0_4_linux32.7z
+Windows 64-bit:
+https://github.com/agameraaron/prestream-timer/releases/download/v0.4/prestream_timer_0_4_windows64.zip
+Windows 32-bit:
+https://github.com/agameraaron/prestream-timer/releases/download/v0.4/prestream_timer_0_4_windows32.zip
+OSX:
+https://github.com/agameraaron/prestream-timer/releases/download/v0.3/prestream_timer_0_4_osx.zip
 
 ![alt text](https://raw.githubusercontent.com/agameraaron/prestream-timer/master/demo1.gif) 
 ![alt text](https://raw.githubusercontent.com/agameraaron/prestream-timer/master/demo2.gif)
