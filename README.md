@@ -17,15 +17,17 @@ For use with a streaming program such as 'OBS'.
 - Editable footer and header
 - Custom colors
 
-# To do:
+# To-do:
 - When minutes are input, modulo by 60 and add to hours.
 - When minutes are input, convert decimal entries to seconds.
 - When hours are input, convert decimal entries to minutes & seconds.
-- Create 'Reset to Defaults' option
-- Create options to control the header, footer and text editing colors
-- Create option to hide time name labels
-- Create cut-out border and option to show it
+- Create 'Reset to Defaults' option.
+- Create options to control the header, footer and text editing colors.
+- Create option to hide time name labels.
+- Create cut-out border and option to show it.
 - Center the text editors during editing, if possible.
+- Update icons to cohere better in size as a group.
+- Update previews.
 
 # About:
 MIT licensed, created by AGamerAaron.
