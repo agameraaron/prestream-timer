@@ -32,25 +32,19 @@ Created & editable in Godot Engine v3.0: https://godotengine.org/
 - Create option to hide time name labels.
 - Create 'Reset to Defaults' option.
 - Update icons to cohere better in size as a group.
+- Change out each font for smooth & outlined fonts.
 - Update previews.
 
 #### Low priority:
 - Auto-save settings on returning to the timer from the options.
 - Auto-load settings upon startup.
-- Custom alert sound plays at timeout.
+- Custom alert sound plays on timeout.
+- Timer zeroes blink on timeout.
 - Alert sound stop button.
 - Alert sound volume slider option.
 - Create cut-out border and option to show it.
+- Color change option for the time type labels as well as the header, footer and their respective editors.
 - Center the text editors during editing, if possible.
-- Font change option for the timer.
-- Font size option for the timer.
-- Font change option for the header and footer.
-- Color change option for the header and footer.
-- Color change option for the header and footer editors.
-- Font size change option for the header, footer & respective editors.
-- Font change option for the time type labels.
-- Color change option for the time type labels.
-- Font size option for the time type labels.
 
 # History:
 I needed a countdown timer for announcing streams preferably alongside some text. I came up with this program to fulfill that need. I'm sure others have done it too, but I didn't bother looking. Felt like a good excuse to make my own little streaming tool.
