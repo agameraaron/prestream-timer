@@ -1,10 +1,12 @@
 # Prestream Timer
 A tool to announce and keep a live update on-stream for viewers to inform them of when a stream will start.
 
+Version 0.5 alpha "Minutes to Hours"
+
 For use with a streaming program such as 'OBS'.
 
 # Download Application:
-|[Linux 64-bit](https://github.com/agameraaron/prestream-timer/releases/download/v0.4/prestream_timer_0_4_linux64.7z)|[Linux 32-bit](https://github.com/agameraaron/prestream-timer/releases/download/v0.4/prestream_timer_0_4_linux32.7z)|[Windows 64-bit](https://github.com/agameraaron/prestream-timer/releases/download/v0.4/prestream_timer_0_4_windows64.zip)|[Windows 32-bit](https://github.com/agameraaron/prestream-timer/releases/download/v0.4/prestream_timer_0_4_windows32.zip)|[OSX](https://github.com/agameraaron/prestream-timer/releases/download/v0.3/prestream_timer_0_4_osx.zip)|
+|[Linux 64-bit](https://github.com/agameraaron/prestream-timer/releases/download/v0.5a/prestream_timer_0_5a_linux64.7z)|[Linux 32-bit](https://github.com/agameraaron/prestream-timer/releases/download/v0.5a/prestream_timer_0_5a_linux32.7z)|[Windows 64-bit](https://github.com/agameraaron/prestream-timer/releases/download/v0.5a/prestream_timer_0_5a_windows64.zip)|[Windows 32-bit](https://github.com/agameraaron/prestream-timer/releases/download/v0.5a/prestream_timer_0_5a_windows32.zip)|[OSX](https://github.com/agameraaron/prestream-timer/releases/download/v0.5a/prestream_timer_0_5a_osx.zip)|
 |:---:|:---:|:---:|:---:|:---:|
 
 # Preview:
@@ -25,13 +27,10 @@ Created & editable in Godot Engine v3.0: https://godotengine.org/
 # To-do:
 
 #### High priority:
-- When minutes are input, modulo by 60 and add to hours.
 - When minutes are input, convert decimal entries to seconds.
 - When hours are input, convert decimal entries to minutes & seconds.
 - Resize the option screen to cover the full viewport.
-- Create option to hide time name labels.
 - Create 'Reset to Defaults' option.
-- Update icons to cohere better in size as a group.
 - Change out each font for smooth & outlined fonts.
 - Update previews.
 
