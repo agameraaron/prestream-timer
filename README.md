@@ -27,21 +27,21 @@ Created & editable in Godot Engine v3.0: https://godotengine.org/
 # To-do:
 
 #### High priority:
-- When minutes are input, convert decimal entries to seconds.
-- When hours are input, convert decimal entries to minutes & seconds.
-- Resize the option screen to cover the full viewport.
 - Create 'Reset to Defaults' option.
 - Change out each font for smooth & outlined fonts.
+- Custom alert sound plays on timeout.
+- Timer zeroes blink on timeout.
+- Alert sound stops when stop button is pressed.
+- Alert sound volume slider option.
+- Alert sound volume test button.
+- Alert sound loop option
 - Update previews.
 
 #### Low priority:
+- When minutes are input, convert decimal entries to seconds.
+- When hours are input, convert decimal entries to minutes & seconds.
 - Auto-save settings on returning to the timer from the options.
 - Auto-load settings upon startup.
-- Custom alert sound plays on timeout.
-- Timer zeroes blink on timeout.
-- Alert sound stop button.
-- Alert sound volume slider option.
-- Create cut-out border and option to show it.
 - Color change option for the time type labels as well as the header, footer and their respective editors.
 - Center the text editors during editing, if possible.
 
